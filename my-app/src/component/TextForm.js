@@ -31,7 +31,7 @@ export default function TextForm(props) {
         <button className='btn btn-success mx-1' onClick={sp}>CLEAR</button>
     </div>
     <div className='container'>
-        <h1> THIS IS YOUR TEXT SUMMARY</h1>
+        <h2> THIS IS YOUR TEXT SUMMARY</h2>
         <p> Number of Words: {txt.length}  </p>
         <p>Number of Letters:{txt.split(" ").length}</p>
         <p>{0.008 * txt.split(" ").length} Minutes To Read</p>
