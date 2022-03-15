@@ -1,31 +1,36 @@
 import React, {useState} from 'react'
 
 export default function About() {
+  const [btn, setbtn] = useState("LIGHT MODE")
   const [myst, setmyst]=useState(
     {
       color:'white',
-      backgroundColor:'black'
+      backgroundColor:'black',
+      border:'1px solid white'
     }
   )
   let aa={
     color:'red',
     }
     const tg=()=>{
-      if(myst.color=='white'){
+      if(myst.color === 'white'){
         setmyst(
           {
             color:'black',
             backgroundColor:'white'
           }
         )
+        setbtn("DARK MODE")
       }
       else{
         setmyst(
           {
             color:'white',
-            backgroundColor:'black'
+            backgroundColor:'black',
+            border:'1px solid white'
           }
         )
+        setbtn("LIGHT MODE")
       }
     }
     
@@ -72,7 +77,7 @@ export default function About() {
   </div>
 </div>
 <div className='container my-2'>
-  <button type='button' onClick={tg} className='btn btn-outline-dark'style={aa}>DARK MODE</button>
+  <button type='button' onClick={tg} className='btn btn-outline-dark'style={aa}>{btn}</button>
 </div>
     </div>
   )
