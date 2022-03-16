@@ -7,6 +7,12 @@ export default function TextForm(props) {
     let newtxt=txt.toUpperCase();
     setText(newtxt);
   }
+  const cop=()=>{
+    let cc=document.getElementById("myinput");
+    cc.select();
+    navigator.clipboard.writeText(cc.value);
+
+  }
   const dp=()=>{
     let a=txt.toLowerCase();
     setText(a);
@@ -18,25 +24,27 @@ export default function TextForm(props) {
   const sp=()=>{
     setText("");
   }
-  const [txt, setText] = useState('ENTER text Here');
+  const [txt, setText] = useState(' ');
   return (
     <>
-        
+      <div className='container' style={{color:props.mode==='dark'?'white':'#082032'}}>  
         <h1>{props.heading}</h1>
         <div className="mb-3">
         
-        <textarea className="form-control" id="myinput" rows="8" value={txt} onChange={hc}></textarea>
+        <textarea className="form-control" style={{backgroundColor:props.mode==='dark'?'#082032':'white',color:props.mode==='dark'?'white':'#082032'}} id="myinput" rows="8" value={txt} onChange={hc}></textarea>
         <button className='btn btn-primary mx-1' onClick={upclick}>Convert to UpparCase</button>
         <button className='btn btn-danger mx-1' onClick={dp}>CONVERT TO LOWERCASE</button>
         <button className='btn btn-success mx-1' onClick={sp}>CLEAR</button>
+        <button className='btn btn-warning mx-1' onClick={cop}>COPY TEXT</button>
     </div>
     <div className='container'>
         <h2> THIS IS YOUR TEXT SUMMARY</h2>
-        <p> Number of Words: {txt.length}  </p>
-        <p>Number of Letters:{txt.split(" ").length}</p>
+        <p> Number of Letters: {txt.length}  </p>
+        <p>Number of Words:{txt.split(" ").length}</p>
         <p>{0.008 * txt.split(" ").length} Minutes To Read</p>
         <h2>PREVIEW</h2>
-        {txt}
+        <p>{txt.length>0?txt:"Enter Something To priview on the text box above "}</p>
+      </div>
       </div>
     </>
   )
