@@ -6,16 +6,19 @@ export default function TextForm(props) {
     console.log("up was c;icked"+txt);
     let newtxt=txt.toUpperCase();
     setText(newtxt);
+    props.alt("CONVERTED TO UPPARCASE","warning")
   }
   const cop=()=>{
     let cc=document.getElementById("myinput");
     cc.select();
     navigator.clipboard.writeText(cc.value);
+    props.alt("you copyed the text","danger")
 
   }
   const dp=()=>{
     let a=txt.toLowerCase();
     setText(a);
+    props.alt("CONVERTED TO LOWERCASE","warning")
   }
   const hc= (event)=>{
     console.log("get the input ");
@@ -23,6 +26,7 @@ export default function TextForm(props) {
   }
   const sp=()=>{
     setText("");
+    props.alt("CLEARED TO TEXT BOX","primary")
   }
   const [txt, setText] = useState(' ');
   return (
@@ -40,7 +44,7 @@ export default function TextForm(props) {
     <div className='container'>
         <h2> THIS IS YOUR TEXT SUMMARY</h2>
         <p> Number of Letters: {txt.length}  </p>
-        <p>Number of Words:{txt.split(" ").length}</p>
+        <p>Number of Words:{txt.length>0 ? txt.trim().split(" ").length : 0}</p>
         <p>{0.008 * txt.split(" ").length} Minutes To Read</p>
         <h2>PREVIEW</h2>
         <p>{txt.length>0?txt:"Enter Something To priview on the text box above "}</p>
